@@ -20,8 +20,6 @@ export const TaskCard = ({ task, index, listId }: Props) => {
   const [editMode, setEditMode] = useState(false);
   const [taskValue, setTaskValue] = useState(task.title);
 
-  console.log('task =>', task);
-
   const editTask = useTasksListStore((state) => state.editTask);
   const removeTask = useTasksListStore((state) => state.removeTask);
 
