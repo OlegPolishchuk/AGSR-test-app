@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Todo Application
 
-## Getting Started
+## Запуск проекта
 
-First, run the development server:
+Убедитесь, что у вас установлен Node.js (v18+). Затем выполните:
 
 ```bash
+# Установка зависимостей
+npm install
+# или
+yarn install
+# или
+pnpm install
+# или
+bun install
+
+# Запуск development сервера
 npm run dev
-# or
+# или
 yarn dev
-# or
+# или
 pnpm dev
-# or
+# или
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение будет доступно по адресу: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Тестовые данные для авторизации
+Используйте следующие данные для входа:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Email: test@mail.com
+## Password: 123
 
-## Learn More
+## Особенности реализации
+📡 API Next.js используется только для моковой авторизации
 
-To learn more about Next.js, take a look at the following resources:
+📦 Все операции с задачами (CRUD) реализованы на клиенте с помощью Zustand
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔐 Состояние сохраняется только в локальном хранилище браузера
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🎭 Работа с формами через React Hook Form + Zod валидацию
 
-## Deploy on Vercel
+## Используемые технологии
+### Основной стек
+Next.js 15	Фреймворк для server-side рендеринга
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+React 19	Библиотека для построения UI
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Zustand 5	Управление клиентским состоянием
+
+Tailwind CSS 4	Стилизация компонентов
+
+shadcn/ui (на базе Radix UI)	Доступные UI компоненты
+
+react-hook-form + @hookform/resolvers + zod - работа с формами и валидация
+
+sonner - Toast-уведомления
