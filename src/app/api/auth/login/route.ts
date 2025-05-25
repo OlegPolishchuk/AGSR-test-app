@@ -1,4 +1,4 @@
-import { loginSchema, sessionToken, validUserCredentials } from '@/shared/constants/auth';
+import { loginSchema, sessionToken, validUserCredentials } from '@/app/(auth)/model/auth';
 import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {

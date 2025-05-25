@@ -1,6 +1,7 @@
-'use client';
-
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { NewTaskListFormFields, TaskListSchema } from '@/app/(main)/tasks-list/model/task-list';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -10,26 +11,34 @@ import {
   FormMessage,
 } from '@/shared/components/ui/form';
 import { Input } from '@/shared/components/ui/input';
-import { Button } from '@/shared/components/ui/button';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Textarea } from '@/shared/components/ui/textarea';
+import { Button } from '@/shared/components/ui/button';
+import { TaskList } from '@/store/tasks-store';
 import { useTasksListStore } from '@/providers/tasks-list-provider';
-import { NewTaskListFormFields, TaskListSchema } from '@/app/(main)/tasks-list/model/task-list';
 
-export const AddListForm = () => {
-  const addNewList = useTasksListStore((state) => state.addList);
+interface Props {
+  taskList: TaskList;
+  onSuccess?: () => void;
+}
+
+export const EditListForm = ({ taskList, onSuccess }: Props) => {
+  const editList = useTasksListStore((state) => state.editList);
 
   const form = useForm<NewTaskListFormFields>({
     resolver: zodResolver(TaskListSchema),
     defaultValues: {
-      title: '',
-      description: '',
+      title: taskList.title,
+      description: taskList.description,
     },
   });
 
   const handleSubmit = (data: NewTaskListFormFields) => {
-    addNewList(data);
+    editList({ id: taskList.id, ...data });
+
+    if (onSuccess) {
+      onSuccess();
+    }
+
     form.reset();
   };
 
@@ -65,7 +74,7 @@ export const AddListForm = () => {
         />
 
         <Button variant={'outline'} type='submit' className={'ml-auto'}>
-          Add
+          Save
         </Button>
       </form>
     </Form>

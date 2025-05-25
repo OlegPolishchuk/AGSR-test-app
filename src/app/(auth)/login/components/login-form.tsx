@@ -13,7 +13,7 @@ import {
 } from '@/shared/components/ui/form';
 import { Input } from '@/shared/components/ui/input';
 import { Button } from '@/shared/components/ui/button';
-import { LoginFormFields, loginSchema } from '@/shared/constants/auth';
+import { LoginFormFields, loginSchema } from '@/app/(auth)/model/auth';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { ROUTES } from '@/shared/constants/routes';

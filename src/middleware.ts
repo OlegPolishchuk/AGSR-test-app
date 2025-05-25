@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { ROUTES } from '@/shared/constants/routes';
-import { sessionToken } from '@/shared/constants/auth';
+import { sessionToken } from '@/app/(auth)/model/auth';
 
 export function middleware(request: NextRequest) {
   const cookie = request.cookies.get('session');

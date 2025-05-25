@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 export type TaskStatus = 'completed' | 'idle';
 
-interface Task {
+export interface Task {
   id: string;
   title: string;
   status: TaskStatus;
@@ -25,9 +25,14 @@ export interface AddNewListFields {
   description?: string;
 }
 
+export interface EditListFields extends AddNewListFields {
+  id: string;
+}
+
 export type TaskListActions = {
-  addList: ({ title, description }: AddNewListFields) => void;
+  addList: (fields: AddNewListFields) => void;
   removeListFromStore: (id: string) => void;
+  editList: (fields: EditListFields) => void;
 };
 
 export type TasksListStore = TasksListState & TaskListActions;
@@ -41,7 +46,13 @@ export const createTasksListStore = (initState: TasksListState = defaultInitStat
     ...initState,
     addList: (data) =>
       set((state) => ({ lists: [{ id: nanoid(), ...data, tasks: [] }, ...state.lists] })),
+
     removeListFromStore: (id) =>
-      set((state) => ({ lists: state.lists.filter((item) => item.id === id) })),
+      set((state) => ({ lists: state.lists.filter((item) => item.id !== id) })),
+
+    editList: (data) =>
+      set((state) => ({
+        lists: state.lists.map((list) => (list.id === data.id ? { ...list, ...data } : list)),
+      })),
   }));
 };
