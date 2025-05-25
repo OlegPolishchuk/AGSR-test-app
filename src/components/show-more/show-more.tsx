@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ComponentProps, RefObject, useState } from 'react';
 import { twMerge } from 'tailwind-merge';

@@ -5,12 +5,10 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/shared/components/ui/dialog';
-import { Button } from '@/shared/components/ui/button';
 import { EditListForm } from '@/app/(main)/tasks-list/components/edit-list-form';
 import { TaskList } from '@/store/tasks-store';
 
