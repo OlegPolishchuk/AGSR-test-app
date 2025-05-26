@@ -32,9 +32,9 @@ function createRefState<Value>(
   return ref;
 }
 
-export function useRefState<Value>(initialValue?: Value): StateRef<Value> {
-  const [state, setState] = useState(initialValue);
-  const [ref] = useState(() => createRefState(initialValue, setState));
+export function useRefState<Value>(initialValue?: Value): StateRef<Value | undefined> {
+  const [state, setState] = useState<Value | undefined>(initialValue);
+  const [ref] = useState(() => createRefState<Value | undefined>(initialValue, setState));
   ref.state = state;
   return ref;
 }

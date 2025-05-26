@@ -12,7 +12,7 @@ import {
 } from '@/shared/components/ui/popover';
 import { Button } from '@/shared/components/ui/button';
 import { IconMoreVertical } from '@/shared/components/icons/icon-more-vertical';
-import { useClickOutside } from '@siberiacancode/reactuse';
+import { useClickOutside } from '@/shared/hooks/use-click-outside';
 
 interface ButtonMoreProps {
   children?: React.ReactNode;

@@ -10,7 +10,7 @@ export interface UseClickOutside {
 
   <Target extends Element>(callback: (event: Event) => void, target?: never): StateRef<Target>;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useClickOutside = ((...params: any[]) => {
   const target = (isTarget(params[0]) ? params[0] : undefined) as HookTarget | undefined;
   const callback = (params[1] ? params[1] : params[0]) as (event: Event) => void;
